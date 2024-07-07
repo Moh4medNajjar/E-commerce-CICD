@@ -40,7 +40,11 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(cors());
+const corsOptions = {
+    origin: 'http://20.250.163.2:4200', // Replace with your frontend's URL
+    optionsSuccessStatus: 200 // For legacy browser support
+};
+app.use(cors(corsOptions));
 
 const PORT = 3000;
 
@@ -49,7 +53,7 @@ app.use('/api/dictionary', dictionaryRoute);
 app.use('/api/cart', cartRoute);
 
 app.use('/test', (req, res, next) => {
-    axios.get('https://www.metaweather.com/api/location/search/?query=melbourne')
+    axios.get('https://fakestoreapi.com/products')
     .then(function (response) {
       // handle success
       return res.send({
