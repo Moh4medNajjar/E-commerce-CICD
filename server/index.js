@@ -42,7 +42,7 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.use('/api/products', productRoute);
 app.use('/api/dictionary', dictionaryRoute);
